@@ -18,10 +18,6 @@ function App() {
   const [instructions, setInstructions] = useState([]);
   const [instructionsForm, setInstructionsForm] = useState('');
 
-  function handleOrderNameChange(e) {
-    setOrderName(e.target.value);
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
     setInstructions([...instructions, instructionsForm]);
