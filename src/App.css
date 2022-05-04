@@ -22,6 +22,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-family: Marker Felt, fantasy;
 }
 
 .App-link {
@@ -35,4 +36,47 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+img {
+  width: 300px;
+  height: 33vh;
+  padding: 20px;
+}
+
+.dropdowns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  padding: 30px;
+  background-color: rgba(207, 84, 198, 0.6);
+  color: white;
+}
+
+.food-images {
+  padding: 20px;
+}
+
+.instructions {
+  background-color: rgba(207, 84, 198, 0.6);
+  color: white;
+  padding: 30px;
+  margin: 30px;
+  font-size: 1rem;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: row;
+}
+
+.arrow {
+  width: 70px;
+  height: 70px;
+  transform: rotate(90deg);
+  opacity: 80%;
+}
+
+h1 {
+  display: flex;
 }
