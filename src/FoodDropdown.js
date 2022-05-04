@@ -5,9 +5,9 @@ export default function FoodDropdown({ setFoodId }) {
     <div>
       <h3>Entree</h3>
       <select onChange={(e) => setFoodId(e.target.value)}>
-        <option value="1">Nigiri</option>
-        <option value="2">Shrimp Tempura Roll</option>
-        <option value="3">Spicy Tuna Hand Rolls</option>
+        <option value="food-1">Nigiri</option>
+        <option value="food-2">Shrimp Tempura Roll</option>
+        <option value="food-3">Spicy Tuna Hand Rolls</option>
       </select>
     </div>
   );

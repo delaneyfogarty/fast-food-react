@@ -11,10 +11,10 @@ import OrderImages from './OrderImages';
 import BackgroundImage from './background.png';
 
 function App() {
-  const [foodId, setFoodId] = useState(1);
-  const [sideId, setSideId] = useState(1);
-  const [drinkId, setDrinkId] = useState(1);
-  const [dessertId, setDessertId] = useState(1);
+  const [foodId, setFoodId] = useState('food-1');
+  const [sideId, setSideId] = useState('side-1');
+  const [drinkId, setDrinkId] = useState('drink-1');
+  const [dessertId, setDessertId] = useState('dessert-1');
   const [orderName, setOrderName] = useState('');
   const [instructions, setInstructions] = useState([]);
   const [instructionsForm, setInstructionsForm] = useState('');
