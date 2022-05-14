@@ -9,21 +9,35 @@ import InstructionsForm from './InstructionsForm';
 import OrderNameInput from './OrderNameInput';
 import OrderImages from './OrderImages';
 import BackgroundImage from './background.png';
+import { render } from '@testing-library/react';
+import { toHaveAccessibleDescription } from '@testing-library/jest-dom/dist/matchers';
 
-function App() {
-  const [foodId, setFoodId] = useState('food-1');
-  const [sideId, setSideId] = useState('side-1');
-  const [drinkId, setDrinkId] = useState('drink-1');
-  const [dessertId, setDessertId] = useState('dessert-1');
-  const [orderName, setOrderName] = useState('');
-  const [instructions, setInstructions] = useState([]);
-  const [instructionsForm, setInstructionsForm] = useState('');
 
-  function handleSubmit(e) {
+export default class App extends React.Component {
+    constructor() {
+      super();
+      this.state = {
+        foodId: 'food-1',
+        sideId: 'side-1',
+        drinkId: 'drink-1',
+        dessertId: 'dessert-1',
+        orderName: '',
+        instructions: [],
+        instructionsForm: ''
+      };
+    }}
+
+    handleSubmit(e) {
     e.preventDefault();
-    setInstructions([...instructions, instructionsForm]);
-    setInstructionsForm('');
+    this.setState([...this.state.instructions, this.state.instructionsForm]);
+    this.setState('');
   }
+
+    handleFoodChange = (foodId) => {
+      this.setState({foodId: foodId})
+    }
+
+  render() {
   return (
     <div className="App">
       <header
@@ -33,26 +47,26 @@ function App() {
           backgroundSize: 'cover',
         }}
       >
-        <h1>Welcome {orderName}! Place your Sushi House order below.</h1>
+        <h1>Welcome {this.state.orderName}! Place your Sushi House order below.</h1>
 
-        <OrderNameInput setOrderName={setOrderName} />
+        <OrderNameInput setOrderName={this.setState.orderName} />
         <div className="food-images">
-          <OrderImages foodId={foodId} sideId={sideId} drinkId={drinkId} dessertId={dessertId} />
+          <OrderImages foodId={this.state.foodId} sideId={this.state.sideId} drinkId={this.state.drinkId} dessertId={this.state.dessertId} />
         </div>
         <section className="bottom">
           <div className="dropdowns">
-            <FoodDropdown setFoodId={setFoodId} />
-            <SideDropdown setSideId={setSideId} />
-            <DrinkDropdown setDrinkId={setDrinkId} />
-            <DessertDropdown setDessertId={setDessertId} />
+            <FoodDropdown setFoodId={this.handleFoodChange} />
+            <SideDropdown setSideId={this.setState({sideId: this.props.sideId})} />
+            <DrinkDropdown setDrinkId={this.setState({drinkId: this.props.drinkId})} />
+            <DessertDropdown setDessertId={this.setState({dessertId: this.props.dessertId})} />
           </div>
           <div className="instructions">
             <InstructionsForm
-              instructionsForm={instructionsForm}
-              handleSubmit={handleSubmit}
-              setInstructionsForm={setInstructionsForm}
+              instructionsForm={this.state.instructionsForm}
+              handleSubmit={this.handleSubmit}
+              setInstructionsForm={this.state.setInstructionsForm}
             />
-            <InstructionsList instructions={instructions} />
+            <InstructionsList instructions={this.state.instructions} />
           </div>
         </section>
       </header>
@@ -60,4 +74,5 @@ function App() {
   );
 }
 
-export default App;
+
+
